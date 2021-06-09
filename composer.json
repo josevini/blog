@@ -1,0 +1,11 @@
+{
+    "name": "site-noticias/app",
+    "autoload": {
+        "psr-4": {
+            "App\\":"app/"
+        }
+    },
+  "require": {
+    "ext-pdo": "*"
+  }
+}
