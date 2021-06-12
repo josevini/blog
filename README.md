@@ -45,3 +45,6 @@ Na pasta onde está localizado o composer.json, execute o segunte comando
 ```shell
 composer install 
 ```
+## Créditos
+Este projeto foi criado completamente por mim, [Vinícius Silva](https://www.linkedin.com/in/viníciussilva946191193
+), mas algumas ideias foram baseadas no vídeo do canal [wdev](https://www.youtube.com/watch?v=uG64BgrlX7o).
