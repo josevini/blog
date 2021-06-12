@@ -6,8 +6,9 @@
 * Composer
 * PDO
 ## O que é preciso para rodar o projeto?
-Para visualizar este site, você precisará de um servidor local que rode PHP e banco de dados MySQL. Pode
-usar uma ferramenta pronta como o xampp server ou containers Docker.
+Para visualizar este site, você precisará de um servidor local que rode PHP e banco de dados MySQL. Pode usar uma ferramenta pronta como o xampp server ou containers Docker.
+## XAMPP ou Docker
+Caso você escolha usar o Xampp server, vá até o arquivo DB.php dentro de app/DB e altere o host para localhost. Caso você esteja usando um container Docker, mantenha o host como db. Recomendo fortemente o uso do xampp para ficar mais fácil de configurar.
 ## Criar o banco
 ```sql
 create database site_noticias default character set utf8
@@ -37,6 +38,8 @@ create table noticias (
 	foreign key (autor) references usuarios(id)
 ) engine=InnoDB default charset = utf8;
 ```
+## Conexão com o Banco
+No arquivo DB.php localizado em app/DB/DB.php, está uma classe para conexão e manipulação do banco de dados. Nele, você pode modificar os dados para conexão se tiver a necessidade. Por padrão, o nome do banco deve ser site_noticias, com usuário root e senha vazia (padrão usado pelo xampp).
 ## Carregar o composer
 Na pasta onde está localizado o composer.json, execute o segunte comando
 ```shell
