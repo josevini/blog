@@ -7,12 +7,12 @@
 * PDO
 ## Criar o banco
 ```sql
-  create database site_noticias default character set utf8
-  default collate utf8_general_ci;
+create database site_noticias default character set utf8
+default collate utf8_general_ci;
 ```
 ## Criar as tabelas
 ```sql
-  create table usuarios (
+create table usuarios (
 	id int not null primary key auto_increment,
 	nome varchar(30) not null,
 	usuario varchar(15) not null unique,
@@ -33,4 +33,9 @@ create table noticias (
 	foreign key (categoria) references categorias(id),
 	foreign key (autor) references usuarios(id)
 ) engine=InnoDB default charset = utf8;
+```
+## Carregar o composer
+Na pasta onde está localizado o composer.json, execute no terminal o segunte comando
+```shell
+composer install 
 ```
