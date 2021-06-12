@@ -5,6 +5,9 @@
 * MySQL
 * Composer
 * PDO
+## O que é preciso para rodar o projeto?
+Para visualizar este site, você precisará de um servidor local que rode PHP e banco de dados MySQL. Pode
+usar uma ferramenta pronta como o xampp server ou containers Docker.
 ## Criar o banco
 ```sql
 create database site_noticias default character set utf8
@@ -35,7 +38,7 @@ create table noticias (
 ) engine=InnoDB default charset = utf8;
 ```
 ## Carregar o composer
-Na pasta onde está localizado o composer.json, execute no terminal o segunte comando
+Na pasta onde está localizado o composer.json, execute o segunte comando
 ```shell
 composer install 
 ```
