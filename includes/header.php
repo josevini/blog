@@ -30,9 +30,6 @@
                             </li>
                             <?php echo $menu;?>
                         </ul>
-                        <form method="get">
-                            <input type="search" class="form-control" placeholder="Pesquisar">
-                        </form>
                     </div>
                 </nav>
             </div>
