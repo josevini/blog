@@ -1,7 +1,7 @@
 <?php
     use App\Entity\Post;
     use App\Session\Login;
-    use App\Entity\Usuario;
+    use App\Entity\User;
     use App\Entity\Category;
 
     require_once __DIR__ . "/vendor/autoload.php";
@@ -18,7 +18,7 @@
     $usuario = $_SESSION['usuario'];
 
     if ($titulo && $categoria && $texto) {
-        $usuarios = new Usuario();
+        $usuarios = new User();
         $usuarios->usuario = $usuario;
         $dados = $usuarios->buscaUsuario();
         $autor = $dados->id;
