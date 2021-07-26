@@ -1,5 +1,5 @@
 <?php
-    use App\Entity\Usuario;
+    use App\Entity\User;
     use App\Session\Login;
     require_once __DIR__."/vendor/autoload.php";
     Login::requireLogout();
@@ -10,7 +10,7 @@
     $senha = $_POST['senha'] ?? null;
 
     if ($nome && $usuario && $senha) {
-        $novo_usuario = new Usuario();
+        $novo_usuario = new User();
         $novo_usuario->nome = $nome;
         $novo_usuario->usuario = $usuario;
         $novo_usuario->senha = $senha;
