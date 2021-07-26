@@ -1,13 +1,14 @@
 <?php
-    use App\Entity\Noticia;
+    use App\Entity\Post;
     use App\Session\Login;
     use App\Entity\Usuario;
-    use App\Entity\Categoria;
+    use App\Entity\Category;
 
     require_once __DIR__ . "/vendor/autoload.php";
     Login::requireLogin();
-    if (!Categoria::buscaCategorias()) {
+    if (!Category::getCategories()) {
         header('Location: nova-categoria.php');
+        exit;
     }
     $msg_final = '';
 
@@ -22,14 +23,13 @@
         $dados = $usuarios->buscaUsuario();
         $autor = $dados->id;
 
-        $nova_noticia = new Noticia();
-        $nova_noticia->titulo = $titulo;
-        $nova_noticia->texto = $texto;
-        $nova_noticia->categoria = $categoria;
-        $nova_noticia->autor = $autor;
-
-        if (!$nova_noticia->buscaNoticia()) {
-            $nova_noticia->cadastrar();
+        if (!Post::getPostByTitle($titulo)) {
+            $newPost = new Post();
+            $newPost->title = $titulo;
+            $newPost->text = $texto;
+            $newPost->category = $categoria;
+            $newPost->author = $autor;
+            $newPost->register();
         } else {
             $msg_final = 'Notícias com o mesmo título não são permitidas!';
         }
