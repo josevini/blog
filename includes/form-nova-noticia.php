@@ -1,5 +1,5 @@
 <?php
-    use App\Entity\Categoria;
+    use App\Entity\Category;
 ?>
 <div class="container">
     <div class="jumbotron">
@@ -12,9 +12,9 @@
                 <label class="sr-only">Categoria</label>
                 <select class="custom-select" name="categoria">
                     <?php
-                    foreach (Categoria::buscaCategorias() as $categoria) {
-                        echo "<option value='$categoria->id'>".ucfirst($categoria->categoria)."</option>";
-                    }
+                        foreach (Category::getCategories() as $categoria) {
+                            echo "<option value='$categoria->id'>".ucfirst($categoria->categoria)."</option>";
+                        }
                     ?>
                 </select>
             </div>
