@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
         <?php
-            use App\Entity\Noticia;
+            use App\Entity\Post;
             use App\Session\Login;
-            $noticias = Noticia::buscaNoticias();
+            $noticias = Post::getPosts();
             foreach ($noticias as $noticia) {
                 echo "<div class='col-lg-4 col-md-6 col-sm-12'>";
                 echo "<div class='card text-dark my-2' style='height: 300px'>";
