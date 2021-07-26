@@ -33,11 +33,12 @@
             }
         }
 
-        public function insert($values) {
+        public function insert($values): int {
             $fields = array_keys($values);
             $binds = array_pad([], count($fields), '?');
             $query = "insert into {$this->table} (".implode(', ', $fields).") values (".implode(', ', $binds).")";
             $this->exec($query, array_values($values));
+            return $this->connection->lastInsertId();
         }
 
         public function select($where = '', $order = '', $limit = '', $fields = '*') {
