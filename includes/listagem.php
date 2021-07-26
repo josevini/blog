@@ -11,7 +11,8 @@
                 echo "<h4 class='card-title'>{$noticia->titulo}</h4>";
                 echo "<p class='card-text'>$noticia->texto</p>";
                 if (Login::isLogged()) {
-                    echo "<a class='btn btn-danger' href='#?opcao=apagar'>Apagar</a>";
+                    echo "<a class='btn btn-success mr-2' href='edit-noticia.php?id=$noticia->id'>Editar</a>";
+                    echo "<a class='btn btn-danger' href='#'>Apagar</a>";
                 }
                 echo "</div>";
                 echo "</div>";
