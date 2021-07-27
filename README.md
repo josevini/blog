@@ -16,26 +16,26 @@ default collate utf8_general_ci;
 ```
 ## Criar as tabelas
 ```sql
-create table usuarios (
+create table users (
 	id int not null primary key auto_increment,
-	nome varchar(30) not null,
-	usuario varchar(15) not null unique,
-	senha varchar(60) not null
+	name varchar(100) not null,
+	user varchar(20) not null unique,
+	password varchar(60) not null
 ) engine=InnoDB default charset = utf8;
 
-create table categorias (
+create table categories (
 	id int not null primary key auto_increment,
-	categoria varchar(20) not null unique
+	category varchar(20) not null unique
 ) engine=InnoDB default charset = utf8;
 
-create table noticias (
+create table posts (
 	id int not null primary key auto_increment,
-	titulo varchar(20) not null unique,
-	texto text not null,
-	categoria int not null,
-	autor int not null,
-	foreign key (categoria) references categorias(id),
-	foreign key (autor) references usuarios(id)
+	title varchar(20) not null unique,
+	text text not null,
+	category int not null,
+	author int not null,
+	foreign key (category) references categories(id),
+	foreign key (author) references users(id)
 ) engine=InnoDB default charset = utf8;
 ```
 ## Conexão com o Banco
