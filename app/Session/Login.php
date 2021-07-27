@@ -18,8 +18,8 @@
             self::init();
             if (!self::isLogged()) {
                 $dados = $usuario->buscaUsuario();
-                $_SESSION['usuario'] = $dados->usuario;
-                $_SESSION['nome'] = $dados->nome;
+                $_SESSION['usuario'] = $dados->user;
+                $_SESSION['nome'] = $dados->name;
                 header('Location: index.php');
                 exit;
             }
