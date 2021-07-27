@@ -1,7 +1,7 @@
 <?php
+    require_once __DIR__."/vendor/autoload.php";
     use App\Session\Login;
     use App\Entity\User;
-    require_once __DIR__."/vendor/autoload.php";
     Login::requireLogout();
     $erro_login = '';
 
@@ -14,7 +14,7 @@
         $dados = $novo_usuario->buscaUsuario();
 
         if ($dados) {
-            if (password_verify($novo_usuario->senha, $dados->senha)) {
+            if (password_verify($novo_usuario->senha, $dados->password)) {
                 Login::login($novo_usuario);
             } else {
                 $erro_login = "Senha incorreta!";
