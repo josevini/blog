@@ -10,19 +10,19 @@
         public string $nome;
 
         public function cadastrar() {
-            $usuarios = new DB('usuarios');
+            $usuarios = new DB('users');
             $usuarios->insert([
-                'nome' => addslashes($this->nome),
-                'usuario' => addslashes($this->usuario),
-                'senha' => password_hash(addslashes($this->senha), PASSWORD_DEFAULT)
+                'name' => addslashes($this->nome),
+                'user' => addslashes($this->usuario),
+                'password' => password_hash(addslashes($this->senha), PASSWORD_DEFAULT)
             ]);
             header('Location: login.php');
             exit;
         }
 
         public function buscaUsuario() {
-            $usuarios = new DB('usuarios');
-            $res = $usuarios->select(where: "usuario = '{$this->usuario}'");
+            $usuarios = new DB('users');
+            $res = $usuarios->select(where: "user = '{$this->usuario}'");
             return $res->fetch(PDO::FETCH_OBJ);
         }
     }
