@@ -6,35 +6,39 @@
     class Post {
         public int $id;
         public string $title;
-        public string $text;
+        public string $content;
         public int $category;
         public int $author;
 
         public static function getPostById($id) {
-            return (new DB('noticias'))->select("id = '$id'")->fetch(PDO::FETCH_OBJ);
+            return (new DB('posts'))->select("id = '$id'")->fetch(PDO::FETCH_OBJ);
         }
 
         public static function getPostByTitle($title) {
-            return (new DB('noticias'))->select("titulo = '$title'")->fetch(PDO::FETCH_OBJ);
+            return (new DB('posts'))->select("title = '$title'")->fetch(PDO::FETCH_OBJ);
         }
 
         public static function getPosts($where = '', $order = '', $limit = '') {
-            return (new DB('noticias'))->select($where, $order, $limit)->fetchAll(PDO::FETCH_OBJ);
+            return (new DB('posts'))->select($where, $order, $limit)->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function register() {
-            $this->id = (new DB('noticias'))->insert([
-                'titulo' => addslashes($this->title),
-                'texto' => addslashes($this->text),
-                'categoria' => addslashes($this->category),
-                'autor' => addslashes($this->author)
+            $this->id = (new DB('posts'))->insert([
+                'title' => addslashes($this->title),
+                'content' => addslashes($this->content),
+                'category' => addslashes($this->category),
+                'author' => addslashes($this->author)
             ]);
         }
 
         public function editPostById($id) {
-            (new DB('noticias'))->update([
-                'titulo' => addslashes($this->title),
-                'texto' => addslashes($this->text)
+            (new DB('posts'))->update([
+                'title' => addslashes($this->title),
+                'content' => addslashes($this->content)
             ], "id = '$id'");
+        }
+
+        public static function deletePostById($id) {
+            (new DB('posts'))->delete("id = '$id'");
         }
     }
