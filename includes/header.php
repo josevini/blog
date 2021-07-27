@@ -1,9 +1,9 @@
 <?php
     use App\Session\Login;
     if (Login::isLogged()) {
-        $menu = file_get_contents("includes/menu-logado.php");
+        $file = 'includes/menu-logged.php';
     } else {
-        $menu = file_get_contents("includes/menu.php");
+        $file = 'includes/menu.php';
     }
 ?>
 
@@ -28,7 +28,9 @@
                             <li class="nav-item">
                                 <a href="index.php" class="nav-link">Home</a>
                             </li>
-                            <?php echo $menu;?>
+                            <?php
+                                require_once "$file";
+                            ?>
                         </ul>
                     </div>
                 </nav>
