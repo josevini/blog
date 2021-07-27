@@ -25,13 +25,13 @@ create table users (
 
 create table categories (
 	id int not null primary key auto_increment,
-	category varchar(20) not null unique
+	category varchar(50) not null unique
 ) engine=InnoDB default charset = utf8;
 
 create table posts (
 	id int not null primary key auto_increment,
-	title varchar(20) not null unique,
-	text text not null,
+	title varchar(100) not null unique,
+	content text not null,
 	category int not null,
 	author int not null,
 	foreign key (category) references categories(id),
