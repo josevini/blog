@@ -1,19 +1,14 @@
 <?php
-    use App\Entity\Post;
     use App\Entity\Category;
-
-    $id = $_GET['id'] ?? null;
-    $post = Post::getPostById($id);
-//    print_r($post);
     $category = Category::getCategoryById($post->category);
 ?>
 
 <div class="container">
     <div class="jumbotron">
-        <form action="edit-post.php" method="post">
+        <form method="post">
             <div class="form-group">
                 <label class="sr-only">Título</label>
-                <input type="text" class="form-control" placeholder="Título" name="title" maxlength="100" value="<?php echo $post->title?>" required>
+                <input type="text" class="form-control" placeholder="Título" name="title" maxlength="100" value="<?=$post->title?>" required>
             </div>
             <div class="form-group">
                 <label class="sr-only">Categoria</label>
