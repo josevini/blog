@@ -42,4 +42,8 @@ class User {
             ], "user = '$this->user'");
         }
     }
+
+    public static function deleteUser($username) {
+        (new DB('users'))->delete("user = '$username'");
+    }
 }
