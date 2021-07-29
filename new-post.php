@@ -4,6 +4,7 @@
     use App\Session\Login;
     use App\Entity\User;
     use App\Entity\Category;
+    use App\Utils\Message;
 
     Login::requireLogin();
     if (!Category::getCategories()) {
@@ -15,13 +16,12 @@
     $title = $_POST['title'] ?? null;
     $content = $_POST['content'] ?? null;
     $category = $_POST['category'] ?? null;
-    $usuario = $_SESSION['usuario'];
+    $user = $_SESSION['user'];
 
     if ($title && $category && $content) {
-        $usuarios = new User();
-        $usuarios->usuario = $usuario;
-        $dados = $usuarios->buscaUsuario();
-        $author = $dados->id;
+        $obUser = new User();
+        $obUser->user = $user;
+        $author = User::getUserByUsername($user)->id;
 
         if (!Post::getPostByTitle($title)) {
             $newPost = new Post();
@@ -30,12 +30,13 @@
             $newPost->category = $category;
             $newPost->author = $author;
             $newPost->register();
+            $msg = Message::success('Notícia cadastrada com sucesso!');
         } else {
-            $msg = 'Notícias com o mesmo título não são permitidas!';
+            $msg = Message::alert('Notícias com o mesmo título não são permitidas!');
         }
     }
 
     require_once "includes/header.php";
-    echo strlen($msg) ? '<div class="container"><div class="alert alert-danger">'.$msg.'</div></div>' : '';
+    echo strlen($msg) ? $msg : '';
     require_once "includes/form-new-post.php";
     require_once "includes/footer.php";
