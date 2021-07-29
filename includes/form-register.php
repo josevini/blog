@@ -1,6 +1,6 @@
 <div class="container">
     <div class="jumbotron">
-        <form action="register.php" method="post">
+        <form method="post">
             <div class="form-group">
                 <label class="sr-only">Nome completo</label>
                 <input type="text" class="form-control" placeholder="Nome completo" name="nome" maxlength="100" required>
