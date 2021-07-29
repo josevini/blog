@@ -1,6 +1,6 @@
 <div class="container">
     <div class="jumbotron">
-        <form action="login.php" method="post">
+        <form method="post">
             <div class="form-group">
                 <label class="sr-only">Usuário</label>
                 <input type="text" class="form-control" placeholder="Usuário" name="usuario" maxlength="20" required>
