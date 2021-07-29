@@ -35,8 +35,8 @@ create table posts (
 	category int not null,
 	author int not null,
 	foreign key (category) references categories(id),
-	foreign key (author) references users(id)
-) engine=InnoDB default charset = utf8;
+	foreign key (author) references users(id) on delete cascade,
+) engine=InnoDB default charset = utf8 on delete cascade;
 ```
 ## Conexão com o Banco
 No arquivo DB.php localizado em app/DB/DB.php, está uma classe para conexão e manipulação do banco de dados. Nele, você pode modificar os dados para conexão se tiver a necessidade. Por padrão, o nome do banco deve ser site_noticias, com usuário root e senha vazia (padrão usado pelo xampp).
