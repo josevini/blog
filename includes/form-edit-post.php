@@ -4,6 +4,7 @@
 
     $id = $_GET['id'] ?? null;
     $post = Post::getPostById($id);
+//    print_r($post);
     $category = Category::getCategoryById($post->category);
 ?>
 
