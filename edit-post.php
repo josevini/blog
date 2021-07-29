@@ -1,8 +1,9 @@
 <?php
+    require_once __DIR__ . "/vendor/autoload.php";
     use App\Session\Login;
     use App\Entity\Post;
-
-    require_once __DIR__ . "/vendor/autoload.php";
+    use App\Utils\Message;
+    $msg = '';
 
     if (!Login::isLogged()) {
         header('Location: login.php');
@@ -21,5 +22,6 @@
     }
 
     require_once "includes/header.php";
+    echo strlen($msg) ? $msg : '';
     require_once "includes/form-edit-post.php";
     require_once "includes/footer.php";
