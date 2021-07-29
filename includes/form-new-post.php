@@ -3,7 +3,7 @@
 ?>
 <div class="container">
     <div class="jumbotron">
-        <form action="new-post.php" method="post">
+        <form method="post">
             <div class="form-group">
                 <label class="sr-only">Título</label>
                 <input type="text" class="form-control" placeholder="Título" name="title" maxlength="100" required>
