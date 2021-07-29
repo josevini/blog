@@ -5,19 +5,17 @@
     Login::requireLogout();
     $msg = '';
 
-    $nome = $_POST['nome'] ?? null;
-    $usuario = $_POST['usuario'] ?? null;
-    $senha = $_POST['senha'] ?? null;
+    $name = $_POST['nome'] ?? null;
+    $user = $_POST['usuario'] ?? null;
+    $password = $_POST['senha'] ?? null;
 
-    if ($nome && $usuario && $senha) {
-        $novo_usuario = new User();
-        $novo_usuario->nome = $nome;
-        $novo_usuario->usuario = $usuario;
-        $novo_usuario->senha = $senha;
-        $dados = $novo_usuario->buscaUsuario();
-
-        if (!$dados) {
-            $novo_usuario->cadastrar();
+    if ($name && $user && $password) {
+        $obUser = new User();
+        if (!User::getUserByUsername($user)) {
+            $obUser->name = $name;
+            $obUser->user = $user;
+            $obUser->password = $password;
+            $obUser->register();
         } else {
             $msg = 'Usuário em uso!';
         }
