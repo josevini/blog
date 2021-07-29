@@ -3,8 +3,8 @@
     use App\Session\Login;
     use App\Entity\User;
     use App\Utils\Message;
+    Login::requireLogout();
 
-Login::requireLogout();
     $msg = '';
 
     $user = $_POST['usuario'] ?? null;
