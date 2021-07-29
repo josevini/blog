@@ -24,7 +24,8 @@
                 <input type="password" class="form-control" placeholder="Nova senha" name="newpassword" maxlength="60">
             </div>
             <button type="submit" class="btn btn-success">Salvar</button>
-            <a href="index.php" class="btn btn-danger">Cancelar</a>
+            <a href="delete-user.php" class="btn btn-danger">Excluir conta</a>
+<!--            <a href="delete-user.php" class="btn btn-warning text-white">Cancelar</a>-->
         </form>
     </div>
 </div>
