@@ -22,6 +22,10 @@
             return (new DB('posts'))->select($where, $order, $limit)->fetchAll(PDO::FETCH_OBJ);
         }
 
+        public static function postExists($title) {
+            return self::getPostByTitle($title);
+        }
+
         public function register() {
             $this->id = (new DB('posts'))->insert([
                 'title' => addslashes($this->title),
