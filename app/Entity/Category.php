@@ -21,7 +21,7 @@
 
         public function register() {
             $this->id = (new DB('categories'))->insert([
-                'category' => $this->category
+                'category' => addslashes($this->category)
             ]);
         }
     }
