@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="jumbotron">
-        <form action="edit-user.php" method="post">
+        <form method="post">
             <div class="form-group">
                 <label class="sr-only">Nome completo</label>
                 <input type="text" class="form-control" placeholder="Nome completo" name="name" maxlength="100" value="<?php echo $user->name?>" required>
