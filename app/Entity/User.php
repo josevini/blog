@@ -1,28 +1,45 @@
 <?php
-    namespace App\Entity;
-    use App\DB\DB;
-    use \PDO;
+namespace App\Entity;
+use App\DB\DB;
+use \PDO;
 
-    class User {
-        public int $id;
-        public string $usuario;
-        public string $senha;
-        public string $nome;
+class User {
+    public int $id;
+    public string $name;
+    public string $user;
+    public string $password;
 
-        public function cadastrar() {
-            $usuarios = new DB('users');
-            $usuarios->insert([
-                'name' => addslashes($this->nome),
-                'user' => addslashes($this->usuario),
-                'password' => password_hash(addslashes($this->senha), PASSWORD_DEFAULT)
-            ]);
-            header('Location: login.php');
-            exit;
-        }
+    public static function getUserByUsername($username) {
+        return (new DB('users'))->select("user = '$username'")->fetch(PDO::FETCH_OBJ);
+    }
 
-        public function buscaUsuario() {
-            $usuarios = new DB('users');
-            $res = $usuarios->select(where: "user = '{$this->usuario}'");
-            return $res->fetch(PDO::FETCH_OBJ);
+    public static function getAllUsers() {
+        return (new DB('users'))->select()->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public static function userExists($user) {
+        return self::getUserByUsername($user);
+    }
+
+    public function register() {
+        $this->id = (new DB('users'))->insert([
+            'name' => addslashes($this->name),
+            'user' => addslashes($this->user),
+            'password' => password_hash(addslashes($this->password), PASSWORD_DEFAULT)
+        ]);
+    }
+
+    public function editUser() {
+        $usersTable = new DB('users');
+        if (isset($this->password)) {
+            $usersTable->update([
+                'name' => addslashes($this->name),
+                'password' => password_hash(addslashes($this->password), PASSWORD_DEFAULT)
+            ], "user = '$this->user'");
+        } else {
+            $usersTable->update([
+                'name' => addslashes($this->name),
+            ], "user = '$this->user'");
         }
     }
+}
