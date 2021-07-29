@@ -11,7 +11,7 @@
         public int $author;
 
         public static function getPostById($id) {
-            return (new DB('posts'))->select("id = '$id'")->fetch(PDO::FETCH_OBJ);
+            return (new DB('posts'))->select("id = '$id'")->fetchObject(self::class);
         }
 
         public static function getPostByTitle($title) {
