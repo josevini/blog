@@ -1,5 +1,5 @@
 <?php
-    $user = $_SESSION['nome'];
+    $user = $_SESSION['name'];
 ?>
 
 <li class="nav-item">
@@ -13,7 +13,7 @@
         <?php echo $user?>
     </a>
     <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Meu perfil</a></li>
+        <li><a class="dropdown-item" href="edit-user.php">Meu perfil</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
     </ul>
