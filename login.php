@@ -2,28 +2,29 @@
     require_once __DIR__."/vendor/autoload.php";
     use App\Session\Login;
     use App\Entity\User;
-    Login::requireLogout();
-    $erro_login = '';
+    use App\Utils\Message;
 
-    $usuario = $_POST['usuario'] ?? null;
-    $senha = $_POST['senha'] ?? null;
-    if ($usuario && $senha) {
-        $novo_usuario = new User();
-        $novo_usuario->usuario = $usuario;
-        $novo_usuario->senha = $senha;
-        $dados = $novo_usuario->buscaUsuario();
+Login::requireLogout();
+    $msg = '';
 
-        if ($dados) {
-            if (password_verify($novo_usuario->senha, $dados->password)) {
-                Login::login($novo_usuario);
+    $user = $_POST['usuario'] ?? null;
+    $password = $_POST['senha'] ?? null;
+
+    if ($user && $password) {
+        $obUser = new User();
+        if (User::getUserByUsername($user)) {
+            if (password_verify($password, User::getUserByUsername($user)->password)) {
+                $obUser->name = User::getUserByUsername($user)->name;
+                $obUser->user = $user;
+                Login::login($obUser);
             } else {
-                $erro_login = "Senha incorreta!";
+                $msg = Message::error('Senha incorreta!');
             }
         } else {
-            $erro_login = "Usuário não encontrado!";
+            $msg = Message::error('Usuário não encontrado!');
         }
     }
     require_once "includes/header.php";
-    echo strlen($erro_login) ? '<div class="container"><div class="alert alert-danger">'.$erro_login.'</div></div>' : '';
+    echo strlen($msg) ? $msg : '';
     require_once "includes/form-login.php";
     require_once "includes/footer.php";
