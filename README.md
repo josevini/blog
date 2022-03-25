@@ -5,7 +5,7 @@
 * MySQL/Mariadb
 * Composer
 * PDO
-## O que é preciso para rodar o projeto?
+## O que é preciso para executar o projeto?
 Para visualizar este site, você precisará de um servidor local que rode PHP e banco de dados MySQL/Mariadb. Pode usar uma ferramenta pronta como o xampp server ou containers Docker.
 ## XAMPP ou Docker
 Caso você escolha usar o Xampp server, vá até o arquivo DB.php dentro de app/DB e altere o host para localhost. Caso você esteja usando um container Docker, mantenha o host como db. Recomendo fortemente o uso do xampp para ficar mais fácil de configurar.
