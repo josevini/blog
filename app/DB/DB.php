@@ -7,7 +7,7 @@
         const HOST = 'db';
         const NAME = 'site_noticias';
         const USER = 'root';
-        const PASS = '';
+        const PASS = 'pass';
         private $connection;
 
         public function __construct(private $table = null){
