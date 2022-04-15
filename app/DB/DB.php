@@ -3,11 +3,9 @@
     use \PDO;
     use \PDOException;
 
+    require_once __DIR__.'/../../bootstrap/app.php';
+
     class DB {
-        const HOST = 'db';
-        const NAME = 'site_noticias';
-        const USER = 'root';
-        const PASS = 'pass';
         private $connection;
 
         public function __construct(private $table = null){
@@ -16,7 +14,7 @@
 
         private function setConnection() {
             try {
-                $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME, self::USER, self::PASS);
+                $this->connection = new PDO('mysql:host='.getenv('HOST').';dbname='.getenv('NAME'), getenv('USER'), getenv('PASS'));
                 $this->connection->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8'");
             } catch (PDOException $e) {
                 die("ERRO: {$e->getMessage()}");
