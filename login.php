@@ -7,8 +7,8 @@
 
     $msg = '';
 
-    $user = $_POST['usuario'] ?? null;
-    $password = $_POST['senha'] ?? null;
+    $user = $_POST['user'] ?? null;
+    $password = $_POST['password'] ?? null;
 
     if ($user && $password) {
         $obUser = new User();
