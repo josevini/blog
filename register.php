@@ -5,9 +5,9 @@
     Login::requireLogout();
     $msg = '';
 
-    $name = $_POST['nome'] ?? null;
-    $user = $_POST['usuario'] ?? null;
-    $password = $_POST['senha'] ?? null;
+    $name = $_POST['name'] ?? null;
+    $user = $_POST['user'] ?? null;
+    $password = $_POST['password'] ?? null;
 
     if ($name && $user && $password) {
         $obUser = new User();
