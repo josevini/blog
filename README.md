@@ -38,8 +38,6 @@ create table posts (
 	foreign key (author) references users(id) on delete cascade
 ) engine=InnoDB default charset = utf8;
 ```
-## Conexão com o Banco
-No arquivo DB.php localizado em app/DB/DB.php, está uma classe para conexão e manipulação do banco de dados. Nele, você pode modificar os dados para conexão se tiver a necessidade. Por padrão, o nome do banco deve ser site_noticias, com usuário root e senha vazia (padrão usado pelo xampp).
 ## Carregar o composer
 Na pasta onde está localizado o composer.json, execute o segunte comando
 ```shell
